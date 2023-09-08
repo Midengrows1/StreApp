@@ -1,0 +1,15 @@
+.Posts {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.Posts__inner {
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+
+  gap: 20px;
+}
+.posts__card {
+  flex: 1 1 auto;
+}

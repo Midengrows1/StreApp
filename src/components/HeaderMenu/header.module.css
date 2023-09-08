@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.header_btn {
+  box-sizing: border-box;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.header_nav {
+  min-width: max-content;
+  max-width: 20vw;
+  width: 100%;
+}
+.header_nav a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

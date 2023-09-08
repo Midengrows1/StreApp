@@ -1,0 +1,10 @@
+.Home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Home__header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
