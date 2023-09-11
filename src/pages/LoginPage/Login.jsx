@@ -1,4 +1,5 @@
 import { Form, Input, Button, Checkbox, Alert, Space } from "antd";
+import s from "./login.module.css";
 import { useDispatch } from "react-redux";
 import { authUser } from "../../store/authSlice";
 import { useSelector } from "react-redux";
@@ -44,73 +45,57 @@ const LoginPage = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="kminchelle"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: "Пожалуйста, введите логин!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="0lelplR"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: "Пожалуйста, введите пароль!",
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
+    <div className={s.form__auth_container}>
+      <Form
+        name="basic"
+        className={s.form_auth}
+        initialValues={{
+          remember: true,
         }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <Checkbox>Запомнить меня</Checkbox>
-      </Form.Item>
+        <div className={s.form_auth_inputs}>
+          <Form.Item
+            label="kminchelle"
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: "Пожалуйста, введите логин!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Войти
-        </Button>
-      </Form.Item>
-      <Toaster />
-    </Form>
+          <Form.Item
+            label="0lelplR"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Пожалуйста, введите пароль!",
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+        </div>
+        <div className={s.form_auth_remember}>
+          <Form.Item name="remember" valuePropName="checked">
+            <Checkbox>Запомнить меня</Checkbox>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Войти
+            </Button>
+          </Form.Item>
+        </div>
+        <Toaster />
+      </Form>
+    </div>
   );
 };
 

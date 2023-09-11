@@ -15,15 +15,11 @@ const LayoutApp = () => {
     <Layout>
       <HeaderMenu></HeaderMenu>
       <Content>
-        <Breadcrumb className={s.breadcrumb}>
-          <Breadcrumb.Item>Главная</Breadcrumb.Item>
-          <Breadcrumb.Item>Авторизация</Breadcrumb.Item>
-        </Breadcrumb>
         <div className={s.container}>
           <Outlet></Outlet>
         </div>
       </Content>
-      <Footer>Ant Design ©2023 Created by Ant UED</Footer>
+      <Footer>Frontend ©2023 Created by Amir </Footer>
     </Layout>
   );
 };

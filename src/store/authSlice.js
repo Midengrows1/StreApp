@@ -4,6 +4,7 @@ const initialState = {
   userToken: null,
   posts: [],
   signState: false,
+  cart: [],
 };
 
 const authSlice = createSlice({
@@ -18,9 +19,13 @@ const authSlice = createSlice({
       localStorage.removeItem("userToken");
       state.signState = false;
     },
+    addCart(state, action) {
+      console.log(action.payload);
+      state.cart.push(action.payload);
+    },
   },
   extraReducers: {},
 });
-export const { authUser, getAllPosts, signOut } = authSlice.actions;
+export const { authUser, getAllPosts, signOut, addCart } = authSlice.actions;
 
 export default authSlice.reducer;

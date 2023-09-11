@@ -1,0 +1,12 @@
+.singleproduct__rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.singleproduct__purchase {
+  margin: 10px 0;
+  width: 40%;
+}
+.singleproduct__purchase:hover {
+}

@@ -4,3 +4,5 @@ export { default as Login } from "./LoginPage";
 export { default as NotfoundPage } from "./NotfoundPage";
 export { default as Logout } from "./Logout";
 export { default as Home } from "./Home/Home";
+export { default as SingleProduct } from "./SingleProduct";
+export { default as SearchPage } from "./SearchPage";

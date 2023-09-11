@@ -5,7 +5,7 @@ const NotfoundPage = () => {
   return (
     <div className={s.notfoundPage}>
       <div className={s.notfoundPage__image}>
-        <img src="../../../public/404Error.png" alt="" />
+        <img src="/404Error.png" alt="" />
       </div>
       <div className={s.notfoundPage__error}>
         <h1>Page Not Found</h1>
