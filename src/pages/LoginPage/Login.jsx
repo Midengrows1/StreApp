@@ -1,6 +1,6 @@
 import { Form, Input, Button, Checkbox, Alert, Space } from "antd";
 import { useDispatch } from "react-redux";
-import { authUser } from "../store/authSlice";
+import { authUser } from "../../store/authSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router-dom";

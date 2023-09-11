@@ -1,9 +1,8 @@
 import s from "./posts.module.css";
-import { Divider, Card } from "antd";
 import axios from "axios";
 import { useMemo, useState } from "react";
 const metaUrl = import.meta.env.VITE_TEST_VAR;
-
+import { Post } from "../../components";
 const Posts = ({ posts }) => {
   let postslet = [];
   const [pagePosts, setpagePosts] = useState([]);
@@ -25,17 +24,7 @@ const Posts = ({ posts }) => {
       <h2>Posts</h2>
       <ul className={s.Posts__inner}>
         {postslet.map((item, index) => {
-          const { id, title, body, tags } = item;
-          return (
-            <li key={id}>
-              <Card title={title} bordered={false} className={s.posts__card}>
-                {tags.map((tag) => {
-                  return <strong>#{tag}, </strong>;
-                })}
-                <p>{body}</p>
-              </Card>
-            </li>
-          );
+          return <Post post={item} key={index}></Post>;
         })}
       </ul>
     </div>

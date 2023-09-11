@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
-import s from "./home.module.css";
-import { Posts, Products } from "../../components";
+import { useMemo, useState } from "react";
+import s from "./Home.module.css";
+import { Posts } from "../../pages";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
+import { Spin, Card } from "antd";
+const { Meta } = Card;
+import StarRatings from "react-star-ratings";
 import axios from "axios";
 const antIcon = (
   <LoadingOutlined
@@ -39,8 +41,38 @@ const Home = () => {
         <Spin indicator={antIcon} />
       ) : (
         <div className={s.Home__header}>
-          <Products products={products} loading={loading}></Products>
-          <Posts posts={posts} loading={loading}></Posts>
+          <div className={s.home__products}>
+            {products.map((item) => {
+              const { images, title, price, description, rating } = item;
+              return (
+                <Card
+                  key={item.id}
+                  hoverable
+                  style={{
+                    width: 240,
+                  }}
+                  cover={<img alt="example" src={images[0]} />}
+                >
+                  <Meta title={title} description={description} />
+                  <Meta
+                    title={rating}
+                    description={
+                      <StarRatings
+                        className={s.product_rating}
+                        rating={rating}
+                        starRatedColor="blue"
+                        numberOfStars={5}
+                        starDimension="20px"
+                        name="rating"
+                        ignoreInlineStyles={false}
+                      />
+                    }
+                  />
+                </Card>
+              );
+            })}
+          </div>
+          <Posts posts={posts}></Posts>
         </div>
       )}
     </div>

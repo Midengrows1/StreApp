@@ -1,0 +1,32 @@
+.notfoundPage__image {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notfoundPage__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.notfoundPage {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.notfoundPage__error {
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.notfoundPage__error a {
+  font-size: 22px;
+}
