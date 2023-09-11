@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import s from "./Home.module.css";
+import s from "./home.module.css";
 import { Posts } from "../../pages";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin, Card } from "antd";
