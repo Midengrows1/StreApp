@@ -10,11 +10,10 @@
   align-items: center;
 }
 .Products__inner {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: minmax(400px, 1fr);
+  display: flex;
+  flex-flow: row wrap;
   gap: 20px;
-  padding: 20px;
+  
 }
 .Products__container {
   display: flex;
@@ -25,4 +24,3 @@
   height: 100%;
   font-size: 20px;
 }
-

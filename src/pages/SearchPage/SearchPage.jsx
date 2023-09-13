@@ -6,48 +6,46 @@ import s from "./searchpage.module.css";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { Post } from "../../components";
-const SearchPage = ({ newtype }) => {
-  const dispatch = useDispatch();
-  const newType = useSelector((state) => state.auth.productType);
+import { Post, Product } from "../../components";
+const SearchPage = () => {
+  const selectedState = useSelector((state) => state.auth.productType);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchData, setSearchData] = useState(null);
+  const [searchData, setSearchData] = useState([]);
   const searchInput = searchParams.get("q");
-  console.log(searchInput);
+  const searchType = searchParams.get("type");
   const onSearch = async () => {
     const getSearchedData = async (type) => {
       const { data } = await axios.get(
         `https://dummyjson.com/${type}/search?q=${searchInput}`
       );
-      setSearchData(data[`${newType}`]);
+      setSearchData(data[`${selectedState}`]);
     };
-    getSearchedData(newType);
-    
+    getSearchedData(selectedState || searchType);
   };
 
   useEffect(() => {
     if (searchInput.length >= 1) {
       onSearch();
     } else {
-      setSearchData(null);
+      setSearchData([]);
     }
-  }, [searchInput, newType]);
-  console.log(searchData);
+  }, [searchInput, selectedState, searchType]);
   return (
     <div className={s.searchpage}>
-      {!!searchData ? (
+      {searchData.length > 0 ? (
         searchData.map((item) => {
           return !!item.images ? (
-            <Card
-              key={item.id}
-              hoverable
-              style={{
-                width: 240,
-              }}
-              cover={<img alt="example" src={item?.images[0]} />}
-            >
-              <Meta title={item.title} description={item.description} />
-            </Card>
+            // <Card
+            //   key={item.id}
+            //   hoverable
+            //   style={{
+            //     width: 240,
+            //   }}
+            //   cover={<img alt="example" src={item?.images[0]} />}
+            // >
+            //   <Meta title={item.title} description={item.description} />
+            // </Card>
+            <Product prod={item}></Product>
           ) : (
             <Post key={item.id} post={item}></Post>
           );

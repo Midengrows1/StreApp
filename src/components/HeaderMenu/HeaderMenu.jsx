@@ -5,6 +5,7 @@ const { Search } = Input;
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { handleChangeType } from "../../store/authSlice";
 import {
   faRightToBracket,
   faHouse,
@@ -12,8 +13,9 @@ import {
   faRectangleList,
 } from "@fortawesome/free-solid-svg-icons";
 const { Header } = Layout;
-import { signOut, handleChange } from "../../store/authSlice";
+import { signOut } from "../../store/authSlice";
 import SearchPage from "../../pages/SearchPage/SearchPage";
+import { useEffect, useMemo, useState } from "react";
 const suffix = (
   <AudioOutlined
     style={{
@@ -34,6 +36,8 @@ const options = [
   },
 ];
 const HeaderMenu = () => {
+  const [selectedType, setSelectedType] = useState("products");
+  const [searchedItem, setSearchedItem] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signstate = useSelector((state) => state.auth.signState);
@@ -42,8 +46,16 @@ const HeaderMenu = () => {
     navigate("/auth");
   };
   const onSearch = (value) => {
-    console.log(value);
-    navigate(`/search?q=${value}`);
+    setSearchedItem(value);
+    navigate(`/search?q=${searchedItem}&type=${selectedType}`);
+  };
+  useEffect(() => {
+    onSearch(searchedItem);
+  }, [searchedItem, selectedType]);
+  const handleChange = (value) => {
+    setSelectedType(value);
+    onSearch(searchedItem);
+    dispatch(handleChangeType(value));
   };
   return (
     <Header className={s.header}>
@@ -96,7 +108,7 @@ const HeaderMenu = () => {
           style={{
             width: 120,
           }}
-          onChange={(e) => dispatch(handleChange(e))}
+          onChange={(e) => handleChange(e)}
           options={options}
         />
       </div>

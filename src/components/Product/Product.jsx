@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider } from "antd";
+import { Divider, Button } from "antd";
 import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
 import s from "./product.module.css";
@@ -37,9 +37,12 @@ const Product = ({ prod }) => {
               }
             </span>
           </div>
-          <Link to={`/products/${id}`}>
-            <button className={s.product__description_buy_btn}>More</button>
-          </Link>
+          <div className={s.product__buy}>
+            <Link to={`/products/${id}`}>
+              <Button type="primary">More</Button>
+            </Link>
+            <Button type="default"> Buy</Button>
+          </div>
         </div>
       </div>
     </li>

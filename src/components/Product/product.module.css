@@ -1,4 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .product {
+  width: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,4 +72,11 @@
   border-radius: 8px;
   padding: 5px;
   border: transparent;
+}
+.product__buy {
+  display: flex;
+  align-items: center;
+}
+.product__buy > * {
+  width: 50%;
 }

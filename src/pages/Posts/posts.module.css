@@ -6,8 +6,7 @@
 .Posts__inner {
   padding: 20px;
   display: flex;
-  flex-flow: row wrap;
-
+  flex-direction: column;
+  flex-flow: column wrap;
   gap: 20px;
 }
-

@@ -20,15 +20,15 @@ const App = () => {
           <Route path="auth" element={<Login />}></Route>
           <Route element={<PrivateRoute />}>
             <Route index element={<Home></Home>} />
-            <Route path="products" element={<Products></Products>}></Route>
           </Route>
+          <Route path="products" element={<Products></Products>}></Route>
           <Route path="posts" element={<Posts></Posts>}></Route>
           <Route path="logout" element={<Logout></Logout>}></Route>
           <Route
             path="products/:id"
             element={<SingleProduct></SingleProduct>}
           ></Route>
-          <Route path="search/" element={<SearchPage ></SearchPage>}></Route>
+          <Route path="search/" element={<SearchPage></SearchPage>}></Route>
         </Route>
         <Route path="*" element={<NotfoundPage></NotfoundPage>}></Route>
       </Routes>

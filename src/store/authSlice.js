@@ -21,17 +21,17 @@ const authSlice = createSlice({
       state.signState = false;
     },
     addCart(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.cart.push(action.payload);
     },
-    handleChange(state, action) {
-      // console.log(action.payload);
+    handleChangeType(state, action) {
+      console.log(action.payload);
       state.productType = action.payload;
     },
   },
   extraReducers: {},
 });
-export const { authUser, getAllPosts, signOut, addCart, handleChange } =
+export const { authUser, getAllPosts, signOut, addCart, handleChangeType } =
   authSlice.actions;
 
 export default authSlice.reducer;

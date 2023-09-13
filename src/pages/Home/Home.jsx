@@ -22,9 +22,9 @@ const Home = () => {
 
   const getRequets = async (url) => {
     const { data } = await axios.get(url);
-    if (data.products) {
+    if (!!data.products) {
       setProducts(data.products);
-    } else if (data.posts) {
+    } else if (!!data.posts) {
       setPosts(data.posts);
     }
   };
