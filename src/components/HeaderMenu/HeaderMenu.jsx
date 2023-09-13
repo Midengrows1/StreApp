@@ -1,6 +1,6 @@
 import s from "./header.module.css";
 import { AudioOutlined } from "@ant-design/icons";
-import { Layout, Menu, Button, Input } from "antd";
+import { Layout, Menu, Button, Input, Select } from "antd";
 const { Search } = Input;
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,8 @@ import {
   faRectangleList,
 } from "@fortawesome/free-solid-svg-icons";
 const { Header } = Layout;
-import { signOut } from "../../store/authSlice";
+import { signOut, handleChange } from "../../store/authSlice";
+import SearchPage from "../../pages/SearchPage/SearchPage";
 const suffix = (
   <AudioOutlined
     style={{
@@ -22,6 +23,16 @@ const suffix = (
   />
 );
 
+const options = [
+  {
+    value: "products",
+    label: "Products",
+  },
+  {
+    value: "posts",
+    label: "Posts",
+  },
+];
 const HeaderMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,14 +82,24 @@ const HeaderMenu = () => {
           },
         ]}
       />
-      <Search
-        style={{ width: 300 }}
-        placeholder="input search text"
-        onSearch={(e) => onSearch(e)}
-        enterButton
-        allowClear
-        size="medium"
-      />
+      <div className={s.search_navigation}>
+        <Search
+          style={{ width: 300 }}
+          placeholder="input search text"
+          onSearch={(e) => onSearch(e)}
+          enterButton
+          allowClear
+          size="medium"
+        />
+        <Select
+          defaultValue="products"
+          style={{
+            width: 120,
+          }}
+          onChange={(e) => dispatch(handleChange(e))}
+          options={options}
+        />
+      </div>
       {signstate ? (
         <Link to="/logout">
           <Button

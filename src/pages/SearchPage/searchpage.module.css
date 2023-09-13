@@ -1,0 +1,17 @@
+.searchpage {
+  height: calc(100vh - 139px);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+searchpage > * {
+  height: 100%;
+}
+.empty_data {
+  height: calc(100vh - 139px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -5,6 +5,7 @@ const initialState = {
   posts: [],
   signState: false,
   cart: [],
+  productType: "products",
 };
 
 const authSlice = createSlice({
@@ -23,9 +24,14 @@ const authSlice = createSlice({
       console.log(action.payload);
       state.cart.push(action.payload);
     },
+    handleChange(state, action) {
+      // console.log(action.payload);
+      state.productType = action.payload;
+    },
   },
   extraReducers: {},
 });
-export const { authUser, getAllPosts, signOut, addCart } = authSlice.actions;
+export const { authUser, getAllPosts, signOut, addCart, handleChange } =
+  authSlice.actions;
 
 export default authSlice.reducer;

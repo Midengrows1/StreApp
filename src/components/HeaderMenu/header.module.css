@@ -26,3 +26,9 @@
   align-items: center;
   gap: 5px;
 }
+.search_navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+

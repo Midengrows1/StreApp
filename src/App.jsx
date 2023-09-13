@@ -28,7 +28,7 @@ const App = () => {
             path="products/:id"
             element={<SingleProduct></SingleProduct>}
           ></Route>
-          <Route path="search/" element={<SearchPage></SearchPage>}></Route>
+          <Route path="search/" element={<SearchPage ></SearchPage>}></Route>
         </Route>
         <Route path="*" element={<NotfoundPage></NotfoundPage>}></Route>
       </Routes>
