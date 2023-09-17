@@ -1,0 +1,25 @@
+.cart_product {
+  /* background: red; */
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.cart__container {
+  display: flex;
+  flex-direction: column;
+  /* background: red; */
+  padding: 10px;
+}
+.product__cart_header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.product__cart_header_category {
+  padding: 5px;
+  font-style: italic;
+  border-radius: 15px;
+  background: gray;
+  color: #fff;
+}

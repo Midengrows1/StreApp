@@ -22,7 +22,6 @@ const authSlice = createSlice({
       state.signState = false;
     },
     addCart(state, action) {
-      // console.log(action.payload);
       state.cart.push(action.payload);
     },
     handleChangeType(state, action) {
@@ -31,6 +30,12 @@ const authSlice = createSlice({
     },
     openDrawer(state, action) {
       state.drawerOpen = !state.drawerOpen;
+    },
+    deleteItem(state, action) {
+      const newupdatedArr = state.cart.filter(
+        (item) => item.id !== action.payload
+      );
+      state.cart = newupdatedArr;
     },
   },
   extraReducers: {},
@@ -42,6 +47,7 @@ export const {
   addCart,
   handleChangeType,
   openDrawer,
+  deleteItem,
 } = authSlice.actions;
 
 export default authSlice.reducer;

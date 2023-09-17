@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { openDrawer } from "../../store/authSlice";
 import { Breadcrumb, Layout, theme } from "antd";
 // ------------------------------
-import HeaderMenu from "../HeaderMenu";
+// import HeaderMenu from "../HeaderMenu";
+// import Cart from "../Cart";
+import { Cart, HeaderMenu } from "../../components";
 import { Outlet } from "react-router-dom";
 import s from "./layout.module.css";
 const LayoutApp = () => {
@@ -21,16 +23,7 @@ const LayoutApp = () => {
         <div className={s.container}>
           <Outlet></Outlet>
         </div>
-        <Drawer
-          title="Basic Drawer"
-          placement="right"
-          onClose={() => dispatch(openDrawer())}
-          open={open}
-        >
-          {purchasedProduct.map((item, index) => {
-            return <p key={item.id}>{item.title}</p>;
-          })}
-        </Drawer>
+        <Cart></Cart>
       </Content>
       <Footer>Frontend ©2023 Created by Amir </Footer>
     </Layout>

@@ -8,13 +8,14 @@ import { addCart, openDrawer } from "../../store/authSlice";
 const Product = ({ prod }) => {
   const { id, title, brand, images, description, category, price, rating } =
     prod;
+  const cartArray = useSelector((state) => state.auth.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const purchaseItem = () => {
-    // alert(123);
     dispatch(addCart(prod));
     dispatch(openDrawer());
   };
+  console.log(cartArray);
   return (
     <li key={id} className={s.product}>
       <div className={s.product__brand}>
