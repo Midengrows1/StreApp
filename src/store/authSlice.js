@@ -6,6 +6,7 @@ const initialState = {
   signState: false,
   cart: [],
   productType: "products",
+  drawerOpen: false,
 };
 
 const authSlice = createSlice({
@@ -28,10 +29,19 @@ const authSlice = createSlice({
       console.log(action.payload);
       state.productType = action.payload;
     },
+    openDrawer(state, action) {
+      state.drawerOpen = !state.drawerOpen;
+    },
   },
   extraReducers: {},
 });
-export const { authUser, getAllPosts, signOut, addCart, handleChangeType } =
-  authSlice.actions;
+export const {
+  authUser,
+  getAllPosts,
+  signOut,
+  addCart,
+  handleChangeType,
+  openDrawer,
+} = authSlice.actions;
 
 export default authSlice.reducer;

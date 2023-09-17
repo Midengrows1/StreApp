@@ -8,9 +8,10 @@ import axios from "axios";
 import StarRatings from "react-star-ratings";
 import { addCart } from "../../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { openDrawer } from "../../store/authSlice";
 const SingleProduct = () => {
   const [product, setProduct] = useState([null]);
-  const [open, setOpen] = useState(false);
+  const open = useSelector((state) => state.auth.drawerOpen);
   const navigate = useNavigate();
   const { id } = useParams();
   const goBack = () => navigate(-1);
@@ -22,8 +23,9 @@ const SingleProduct = () => {
     setProduct(data);
   };
   const buyProduct = (product) => {
-    setOpen(true);
+    // setOpen(true);
     dispatch(addCart(product));
+    dispatch(openDrawer());
     console.log(purchasedProduct[0].title);
   };
 
@@ -69,10 +71,10 @@ const SingleProduct = () => {
           <Drawer
             title="Basic Drawer"
             placement="right"
-            onClose={() => setOpen(false)}
+            onClose={() => dispatch(openDrawer())}
             open={open}
           >
-            {purchasedProduct.map((item,index) => {
+            {purchasedProduct.map((item, index) => {
               return <p key={id}>{item.title}</p>;
             })}
           </Drawer>

@@ -1,11 +1,20 @@
 import React from "react";
 import { Divider, Button } from "antd";
 import StarRatings from "react-star-ratings";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "./product.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart, openDrawer } from "../../store/authSlice";
 const Product = ({ prod }) => {
   const { id, title, brand, images, description, category, price, rating } =
     prod;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const purchaseItem = () => {
+    // alert(123);
+    dispatch(addCart(prod));
+    dispatch(openDrawer());
+  };
   return (
     <li key={id} className={s.product}>
       <div className={s.product__brand}>
@@ -41,7 +50,9 @@ const Product = ({ prod }) => {
             <Link to={`/products/${id}`}>
               <Button type="primary">More</Button>
             </Link>
-            <Button type="default"> Buy</Button>
+            <Button type="default" onClick={() => purchaseItem()}>
+              Buy
+            </Button>
           </div>
         </div>
       </div>

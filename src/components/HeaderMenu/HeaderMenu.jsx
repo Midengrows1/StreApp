@@ -1,16 +1,17 @@
 import s from "./header.module.css";
 import { AudioOutlined } from "@ant-design/icons";
-import { Layout, Menu, Button, Input, Select } from "antd";
+import { Layout, Menu, Button, Input, Select, Avatar, Badge } from "antd";
 const { Search } = Input;
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { handleChangeType } from "../../store/authSlice";
+import { handleChangeType, openDrawer } from "../../store/authSlice";
 import {
   faRightToBracket,
   faHouse,
   faStore,
   faRectangleList,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 const { Header } = Layout;
 import { signOut } from "../../store/authSlice";
@@ -38,20 +39,29 @@ const options = [
 const HeaderMenu = () => {
   const [selectedType, setSelectedType] = useState("products");
   const [searchedItem, setSearchedItem] = useState("");
+  const purchasedProduct = useSelector((state) => state.auth.cart);
+  const [count, setCount] = useState(5);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signstate = useSelector((state) => state.auth.signState);
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decline = () => {
+    let newCount = count - 1;
+    if (newCount < 0) {
+      newCount = 0;
+    }
+    setCount(newCount);
+  };
   const signingOut = () => {
     dispatch(signOut());
     navigate("/auth");
   };
   const onSearch = (value) => {
     setSearchedItem(value);
-    navigate(`/search?q=${searchedItem}&type=${selectedType}`);
+    navigate(`search?q=${value}&type=${selectedType}`);
   };
-  useEffect(() => {
-    onSearch(searchedItem);
-  }, [searchedItem, selectedType]);
   const handleChange = (value) => {
     setSelectedType(value);
     onSearch(searchedItem);
@@ -112,6 +122,18 @@ const HeaderMenu = () => {
           options={options}
         />
       </div>
+      <Badge
+        count={purchasedProduct.length}
+        overflowCount={99}
+        onClick={() => dispatch(openDrawer())}
+      >
+        <Avatar shape="square" size="large" className={s.header__cart}>
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            className={s.cart_shopping}
+          ></FontAwesomeIcon>
+        </Avatar>
+      </Badge>
       {signstate ? (
         <Link to="/logout">
           <Button

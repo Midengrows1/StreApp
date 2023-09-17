@@ -22,7 +22,6 @@ const SearchPage = () => {
     };
     getSearchedData(selectedState || searchType);
   };
-
   useEffect(() => {
     if (searchInput.length >= 1) {
       onSearch();
@@ -35,17 +34,7 @@ const SearchPage = () => {
       {searchData.length > 0 ? (
         searchData.map((item) => {
           return !!item.images ? (
-            // <Card
-            //   key={item.id}
-            //   hoverable
-            //   style={{
-            //     width: 240,
-            //   }}
-            //   cover={<img alt="example" src={item?.images[0]} />}
-            // >
-            //   <Meta title={item.title} description={item.description} />
-            // </Card>
-            <Product prod={item}></Product>
+            <Product prod={item} key={item.id}></Product>
           ) : (
             <Post key={item.id} post={item}></Post>
           );

@@ -31,4 +31,13 @@
   align-items: center;
   gap: 20px;
 }
-
+.header__cart {
+  display: inline-block;
+  align-items: center;
+  color: blue;
+  background: #fff;
+  cursor: pointer;
+}
+.cart_shopping:hover {
+  transform: scale(1.1);
+}
